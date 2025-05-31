@@ -1,136 +1,100 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Title</title>
+    <title>Cad Services - Home</title>
+    <link rel="icon" type="image/x-icon" href="public/logo.jpeg">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        #formBox {
-            box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2);
-            border: 2px solid rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            padding: 10px;
-            background-color: rgb(25, 47, 56);
-            width: 400px;
-            margin-top: 3%;
-            margin-left: 33%;
-            color: white;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-        }
         
-        .entries {
-            box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-        }
-        
-        .entries:hover {
-            cursor: pointer;
-        }
-        
-        #age {
-            width: 42.3%;
-        }
-        
-        #submit {
-            background-color: green;
-            color: black;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 30px;
-            width: 113px;
-            padding: 3px;
-            box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-            margin-left: 135px;
-        }
-        
-        #submit:hover {
-            cursor: pointer;
-        }
-        
-        .error {
-            color: red;
-        }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style:none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color:#0796c8;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s;
+}
+
+.hamburger:hover {
+  color:#0796c8;
+}
+
+/* MOBILE VERSION */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    margin-top:1%;
+    margin-right:4%;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
     </style>
 </head>
-
 <body>
-    <div id="formBox">
-        <form id="myForm">
-            <h1>Registration Form</h1>
-            <label>First name:</label><br>
-            <input class="entries" type="text" id="fname" required><br><br>
-            <label>Last name:</label><br>
-            <input class="entries" type="text" id="lname" required><br><br>
-            <label>Age:</label><br>
-            <input class="entries" type="number" id="age" min="1" max="100" required><br><br>
-            <label>Phone:</label><br>
-            <input class="entries" type="text" id="phone" required><br><br>
-            <label>Email:</label><br>
-            <input class="entries" type="email" id="email" required><br>
-            <span class="error" id="emailError"></span><br>
-            <label>Password:</label><br>
-            <input class="entries" type="password" id="password" required><br>
-            <input class="entries" type="checkbox" onclick="ShowPass()"><label for="showPass">Show Password</label><br>
-            <span class="error" id="passwordError"></span><br><br>
-            <label>Confirm Password:</label><br>
-            <input class="entries" type="password" id="passwordConfirm" required><br>
-            <span class="error" id="passwordConfirmError"></span><br><br>
-            <input type="submit" value="Submit" id="submit">
-
-        </form>
-        <script>
-            let isValid = true;
-            document.getElementById("myForm").addEventListener("submit", function(event) {
-
-                let email = document.getElementById("email").value;
-                let emailError = document.getElementById("emailError");
-                if (!/^\S+@\S+\.\S+$/.test(email)) {
-                    emailError.textContent = "Invalid email format!";
-                    event.preventDefault();
-                    let isValid = false;
-                } else {
-                    emailError.textContent = "";
-                    let isValid = true;
-                }
-
-
-                let password = document.getElementById("password").value;
-                let passwordError = document.getElementById("passwordError");
-                if (!/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
-                    passwordError.textContent = "Password must be at least 8 characters long, contain at least one uppercase letter and one number!";
-                    event.preventDefault();
-                    let isValid = false;
-                } else {
-                    passwordError.textContent = "";
-                    let isValid = true;
-                }
-
-
-                let passwordConfirm = document.getElementById("passwordConfirm").value;
-                let passwordConfirmError = document.getElementById("passwordConfirmError");
-                if (password == passwordConfirm) {
-                    passwordConfirmError.textContent = "";
-                    let isValid = true;
-                } else {
-                    passwordConfirmError.textContent = "Passwords do not match!";
-                    event.preventDefault();
-                    let isValid = false;
-                }
-            })
-
-            function ShowPass() {
-                let showPass = document.getElementById("password");
-                if (password.type === "password") {
-                    password.type = "text", passwordConfirm.type = "text";
-                } else {
-                    password.type = "password", passwordConfirm.type = "password";
-                }
-            }
-        </script>
-    </div>
-
-</body>
-
-</html>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <a href="/about"><img src="cad services.jpeg" alt="Cad Services Logo"></a>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" class="navlink">Home</a>
+            <a href="services.html" class="navlink">Services</a>
+            <a href="posts.html" class="navlink">Portfolio</a>
+            <a href="about.html" class="navlink">About</a>
+            <a href="contact.html" class="navlink">Contact</a>
+        </div>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+    </nav>
+    <link rel="script" href="index.js">
+    </body>
